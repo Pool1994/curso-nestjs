@@ -8,20 +8,32 @@ import { Role } from '../roles/entities/role.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User) private readonly userModel:typeof User){}
+  constructor(@InjectModel(User) private readonly userModel: typeof User) { }
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
   }
 
-  findAll() {
+  async findAll() {
     return this.userModel.findAll({
-      include:[{
-        model:Role,
-        include:[Permission]
+      include: [{
+        model: Role,
+        include: [Permission]
       }]
     });
   }
-
+  findOneByEmail(email: string) {
+    return this.userModel.findOne({
+      include: [
+        {
+          model: Role,
+          include: [Permission]
+        }
+      ],
+      where: {
+        email
+      }
+    });
+  }
   findOne(id: number) {
     return `This action returns a #${id} user`;
   }

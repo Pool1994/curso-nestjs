@@ -10,6 +10,7 @@ import { AllExceptionsFilter } from './lib/validations/exceptions';
 import { BreedsModule } from './modules/breeds/breeds.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +25,7 @@ import { UsersModule } from './modules/users/users.module';
     BreedsModule,
     RolesModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [{

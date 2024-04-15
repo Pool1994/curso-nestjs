@@ -1,13 +1,12 @@
 import sequelize from "sequelize";
-import { BelongsTo, BelongsToMany, Column, CreatedAt, DataType, Model, Table, UpdatedAt, } from "sequelize-typescript";
-import { RoleHasPermission } from "src/modules/roles/entities/has/role_has_permissions.entity";
+import { BelongsToMany, Column, CreatedAt, DataType, Model, Table, UpdatedAt, } from "sequelize-typescript";
 import { UserHasRole } from "src/modules/roles/entities/has/user_has_roles.entity";
-import { Permission } from "src/modules/roles/entities/permissions.entity";
 import { Role } from "src/modules/roles/entities/role.entity";
 @Table
 export class User extends Model<User> {
     @Column({
-        allowNull: false
+        allowNull: false,
+        type:DataType.STRING(50)
     })
     name: string;
 
@@ -22,9 +21,6 @@ export class User extends Model<User> {
     })
     password: string;
 
-    @Column
-    prueba:string;
-    
     @CreatedAt
     createdAt: Date;
 
