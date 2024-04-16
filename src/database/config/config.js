@@ -1,24 +1,27 @@
+require('dotenv').config();
 module.exports = {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "nestjs_course",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port":3307
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_DATABASE,
+    "host": process.env.DB_HOST,
+    "dialect": process.env.DB_CONNECTION,
+    "port": process.env.DB_PORT
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_DATABASE,
+    "host": process.env.DB_HOST,
+    "dialect": process.env.DB_CONNECTION,
+    "port": process.env.DB_PORT
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_DATABASE,
+    "host": process.env.DB_HOST,
+    "dialect": process.env.DB_CONNECTION,
+    "port": process.env.DB_PORT
   }
 }
