@@ -10,7 +10,7 @@ export class AuthService {
         if (!user) {
             throw new UnauthorizedException('Email incorrecto');
         }
-        const payload = {email: user.email, sub: user.id};
+        const payload = {email: user.email, sub: user.id,roles:user.roles};
         const token = await this.jwt.signAsync(payload);
         return {
             token,

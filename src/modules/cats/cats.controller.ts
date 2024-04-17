@@ -1,13 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { CastsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cast.dto';
 import { UpdateCatDto } from './dto/update-cast.dto';
+import { AuthGuards } from '../auth/guards/guards.guard';
+import { HasPermission } from '../auth/decorator/has-permission.decorator';
 
+@UseGuards(AuthGuards)
 @Controller('cats')
 export class CastsController {
   constructor(private readonly castsService: CastsService) { }
 
   @Post()
+  @HasPermission('cats.store')
   async create(@Body() createCastDto: CreateCatDto) {
     let result = await this.castsService.create(createCastDto);
     if (result) {
@@ -21,6 +25,7 @@ export class CastsController {
   }
 
   @Get()
+  @HasPermission('cats.list')
   findAll() {
     return this.castsService.findAll();
   }
@@ -31,11 +36,13 @@ export class CastsController {
   }
 
   @Patch(':id')
+  @HasPermission('cats.update')
   update(@Param('id') id: string, @Body() updateCastDto: UpdateCatDto) {
     return this.castsService.update(+id, updateCastDto);
   }
 
   @Delete(':id')
+  @HasPermission('cats.delete')
   remove(@Param('id') id: string) {
     return this.castsService.remove(+id);
   }
