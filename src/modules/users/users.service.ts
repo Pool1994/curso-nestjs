@@ -31,7 +31,8 @@ export class UsersService {
       ],
       where: {
         email
-      }
+      },
+      attributes:['id','name','email']
     });
   }
   findOne(id: number) {

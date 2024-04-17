@@ -30,6 +30,7 @@ export const configDatabase = (config: ConfigService) => {
                 underscored:true,
                 timestamps:true
             },
+            logging:false
         }
     }
     return params;
