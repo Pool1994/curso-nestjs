@@ -1,6 +1,8 @@
 import { Column, CreatedAt, DataType, Model, Table, UpdatedAt } from "sequelize-typescript";
 
-@Table
+@Table({
+    tableName: "permissions"
+})
 export class Permission extends Model<Permission>{
     @Column({
         allowNull:false,

@@ -41,7 +41,7 @@ export class AuthGuards implements CanActivate {
         this.verifyPermissions(payload);
       }
     } catch (ex) {
-      throw new UnauthorizedException("Verificando token");
+      throw new UnauthorizedException(ex.message);
     }
   }
   private verifyRoles(user: User) {
@@ -53,11 +53,11 @@ export class AuthGuards implements CanActivate {
       return item.permissions.map((perm) => perm.name);
     });
     console.log(this.userPermissions);
-    if(!this.userPermissions){
+    if (!this.userPermissions) {
       return true;
     }
     let hasPermissions = permissions.some(x => this.userPermissions.includes(x));
-    console.log({hasPermissions});
+    console.log({ hasPermissions });
     if (!hasPermissions) {
       throw new UnauthorizedException('No tienes permisos para realizar esta acción');
     }

@@ -21,6 +21,15 @@ module.exports = {
         password: await bcrypt.hash(password, saltOrRounds),
         created_at: new Date(),
         updated_at: new Date()
+      },
+      {
+        name: "Cajero",
+        email: "cajero@gmail.com",
+        full_access:"NO",
+        allow_remove:"YES",
+        password: await bcrypt.hash(password, saltOrRounds),
+        created_at: new Date(),
+        updated_at: new Date()
       }
     ], {})
   },

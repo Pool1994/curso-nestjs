@@ -3,7 +3,8 @@ import { Role } from "../role.entity";
 import { User } from "src/modules/users/entities/user.entity";
 
 @Table({
-    timestamps: false
+    timestamps: false,
+    tableName:"user_has_roles"
 })
 export class UserHasRole extends Model<UserHasRole> {
     @Column({

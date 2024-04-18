@@ -16,21 +16,21 @@ export const configDatabase = (config: ConfigService) => {
         mysql: {
             dialect: 'mysql',
             host: config.get('DB_HOST') ? config.get('DB_HOST') : '127.0.0.1',
-            port: config.get('DB_PORT') ? config.get('DB_PORT') : 3306,
+            port: config.get('DB_PORT') ? Number(config.get('DB_PORT')) : 3306,
             username: config.get('DB_USERNAME') ? config.get('DB_USERNAME') : 'root',
             password: config.get('DB_PASSWORD') ? config.get('DB_PASSWORD') : 'password',
             database: config.get('DB_DATABASE') ? config.get('DB_DATABASE') : 'test',
             autoLoadModels: true,
             sync: {
                 force: false,
-                alter:true
+                alter: true
             },
-            synchronize:true,
-            define:{
-                underscored:true,
-                timestamps:true
+            synchronize: false,
+            define: {
+                underscored: true,
+                timestamps: true
             },
-            logging:false
+            logging: false
         }
     }
     return params;

@@ -2,7 +2,8 @@ import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize
 import { Permission } from "../permissions.entity";
 import { Role } from "../role.entity";
 @Table({
-    timestamps:false
+    timestamps:false,
+    tableName:"role_has_permissions"
 })
 export class RoleHasPermission extends Model<RoleHasPermission> {
     @Column({

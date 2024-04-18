@@ -9,7 +9,9 @@ export enum AllowRemove {
     Yes = "YES",
     No = "NO"
 }
-@Table
+@Table({
+    tableName: "roles"
+})
 export class Role extends Model<Role> {
 
     @Column({

@@ -2,7 +2,9 @@ import sequelize from "sequelize";
 import { BelongsToMany, Column, CreatedAt, DataType, Model, Table, UpdatedAt, } from "sequelize-typescript";
 import { UserHasRole } from "src/modules/roles/entities/has/user_has_roles.entity";
 import { Role } from "src/modules/roles/entities/role.entity";
-@Table
+@Table({
+    tableName: "users"
+})
 export class User extends Model<User> {
     @Column({
         allowNull: false,
